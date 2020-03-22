@@ -9,6 +9,22 @@ public class MovingObject extends GameObject {
         Vy = yVelocity;
     }
 
+    public int getVx() {
+        return Vx;
+    }
+
+    public void setVx(int vx) {
+        Vx = vx;
+    }
+
+    public int getVy() {
+        return Vy;
+    }
+
+    public void setVy(int vy) {
+        Vy = vy;
+    }
+
     public static void isKeyPressed(int key){
 
     }

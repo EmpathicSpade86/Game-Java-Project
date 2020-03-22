@@ -3,14 +3,24 @@ public class Sprite {
         private String name;
         private String path;
         private int frame;
+        private String pathExtention;
 
         public Sprite() {
+        }
+
+        public String getPathExtention() {
+                return pathExtention;
+        }
+
+        public void setPathExtention(String pathExtention) {
+                this.pathExtention = pathExtention;
         }
 
         public Sprite(String name, String path, int frame) {
                 this.name = name;
                 this.path = path;
                 this.frame = frame;
+                this.pathExtention = pathExtention;
         }
 
         public String getName() {
@@ -45,32 +55,34 @@ public class Sprite {
         }
 
         public void SpriteUp(){
-                this.path += "up/up ";
+
+                this.pathExtention += "up/up ";
                 this.frame = 1;
         }
 
         public void SpriteDown(){
-                this.path += "down/down ";
+                this.pathExtention += "down/down ";
                 this.frame = 1;
         }
 
         public void SpriteLeft(){
-                this.path += "left/left ";
+                this.pathExtention += "left/left ";
                 this.frame = 1;
         }
 
         public void SpriteRight(){
-                this.path += "right/right ";
+                this.pathExtention += "right/right ";
                 this.frame = 1;
         }
 
         public void SpriteIdle(){
-                this.path += "down/down ";
+                pathExtention = "down/down ";
+                this.path += pathExtention;
                 this.frame = 1;
         }
 
         public void SpriteDead(){
-                this.path += "dead ";
+                this.pathExtention += "dead ";
         }
 
 
