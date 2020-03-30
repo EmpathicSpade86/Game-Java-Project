@@ -3,10 +3,21 @@ import static java.awt.event.KeyEvent.*;
 public class MovingObject extends GameObject {
     int Vx;
     int Vy;
-    public MovingObject(int xPos, int yPos, Sprite appearance, int xVelocity, int yVelocity) {
+    int health;
+
+    public MovingObject(int xPos, int yPos, Sprite appearance, int Vx, int Vy, int health) {
         super(xPos, yPos, appearance);
-        Vx = xVelocity;
-        Vy = yVelocity;
+        this.Vx = Vx;
+        this.Vy = Vy;
+        this.health = health;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
     }
 
     public int getVx() {
@@ -25,7 +36,4 @@ public class MovingObject extends GameObject {
         Vy = vy;
     }
 
-    public static void isKeyPressed(int key){
-
-    }
 }

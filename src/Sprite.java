@@ -55,7 +55,6 @@ public class Sprite {
         }
 
         public void SpriteUp(){
-
                 this.pathExtention += "up/up ";
                 this.frame = 1;
         }
