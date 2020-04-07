@@ -24,8 +24,6 @@ public class Main {
         StdDraw.setScale(0,Scale);
 
         dude.SpriteIdle();
-        double positionY= tester.getyPos();
-        double positionX= tester.getxPos();
 
         zombie1.SpriteIdle();
         zombie2.SpriteIdle();
@@ -37,7 +35,7 @@ public class Main {
         {
             StdDraw.picture(zom1.getVx(),zom1.getVy(), "Sprites/" + zombie1.getPath() + "(" +zombie1.getFrame() + ").png");
             zombie1.animate();
-            StdDraw.picture(positionX,positionY,"Sprites/" + dude.getPath() + "(" + dude.getFrame() + ").png");
+            StdDraw.picture(tester.getVx(),tester.getVy(),"Sprites/" + dude.getPath() + "(" + dude.getFrame() + ").png");
             dude.animate();
             StdDraw.show();
             StdDraw.clear();
@@ -60,24 +58,30 @@ public class Main {
             if (StdDraw.isKeyPressed(VK_DOWN)){
                 dude.setPathExtention("");
                 dude.SpriteDown();
-                positionY = positionY - 10;
+                tester.setVy(tester.getVy()-10);
             }
             if (StdDraw.isKeyPressed(VK_UP)){
                 dude.setPathExtention("");
                 dude.SpriteUp();
-                positionY = positionY + 10;
+                tester.setVy(tester.getVy()+10);
             }
             if (StdDraw.isKeyPressed(VK_LEFT)){
                 dude.setPathExtention("");
                 dude.SpriteLeft();
-                positionX = positionX - 10;
+                tester.setVx(tester.getVx()-10);
             }
             if (StdDraw.isKeyPressed(VK_RIGHT)){
                 dude.setPathExtention("");
                 dude.SpriteRight();
-                positionX = positionX + 10;
+                tester.setVx(tester.getVx()+10);
             }
+            //Zombie Moving Mechanics
 
+
+            // Taking away Health due to zombie "bite"
+            if (tester.getVy() == zom1.getVy() && tester.getVx() == zom1.getVx()){
+                tester.setHealth(tester.getHealth()-10);
+            }
 
 
         }
