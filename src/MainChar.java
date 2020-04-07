@@ -1,6 +1,11 @@
 public class MainChar extends MovingObject {
 
-    public MainChar(int xPos, int yPos, Sprite appearance, int Vx, int Vy, int health) {
+    int ammoCount;
+    boolean gunAcquired;
+
+    public MainChar(int xPos, int yPos, Sprite appearance, int Vx, int Vy, int health, int ammoCount, boolean gunAcquired) {
         super(xPos, yPos, appearance, Vx, Vy, health);
+        this.ammoCount = ammoCount;
+        this.gunAcquired = gunAcquired;
     }
 }

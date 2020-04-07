@@ -7,8 +7,8 @@ public class MovingObject extends GameObject {
 
     public MovingObject(int xPos, int yPos, Sprite appearance, int Vx, int Vy, int health) {
         super(xPos, yPos, appearance);
-        this.Vx = Vx;
-        this.Vy = Vy;
+        this.Vx = xPos;
+        this.Vy = yPos;
         this.health = health;
     }
 
@@ -35,5 +35,4 @@ public class MovingObject extends GameObject {
     public void setVy(int vy) {
         Vy = vy;
     }
-
 }
