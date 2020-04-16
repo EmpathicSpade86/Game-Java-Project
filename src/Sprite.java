@@ -5,9 +5,6 @@ public class Sprite {
         private int frame;
         private String pathExtention;
 
-        public Sprite() {
-        }
-
         public String getPathExtention() {
                 return pathExtention;
         }
@@ -23,6 +20,12 @@ public class Sprite {
                 this.pathExtention = pathExtention;
         }
 
+
+        public Sprite(String name, String path){
+                this.name = name;
+                this.path = path;
+                this.pathExtention = pathExtention;
+        }
         public String getName() {
                 return name;
         }

@@ -35,4 +35,22 @@ public class MovingObject extends GameObject {
     public void setVy(int vy) {
         Vy = vy;
     }
+
+    public void MoveTowards(MovingObject me, MovingObject character) {
+        if (character.getVx() > me.getVx()) {
+            me.setVx(me.getVx() + 10);
+        } else {
+            me.setVx(me.getVx() - 10);
+        }
+        if (character.getVy() > me.getVy()) {
+            me.setVx((me.getVy() + 10));
+        } else {
+            me.setVy(me.getVy() - 10);
+        }
+
+        if (character.getVx() == me.getVx() && character.getVy() == me.getVy()){
+            me.setVx(me.getVx()+1);
+            me.setVy(me.getVy()+1);
+        }
+    }
 }

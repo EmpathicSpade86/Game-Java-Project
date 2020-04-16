@@ -32,4 +32,8 @@ public class GameObject {
         this.yPos = yPos;
         this.appearance = appearance;
     }
+    public GameObject(int xPos, int yPos) {
+        this.xPos = xPos;
+        this.yPos = yPos;
+    }
 }
