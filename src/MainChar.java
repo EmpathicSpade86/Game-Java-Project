@@ -1,3 +1,6 @@
+import static java.awt.event.KeyEvent.*;
+import static java.awt.event.KeyEvent.VK_RIGHT;
+
 public class MainChar extends MovingObject {
 
     int ammoCount;

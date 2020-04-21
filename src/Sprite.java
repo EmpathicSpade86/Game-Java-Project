@@ -59,28 +59,28 @@ public class Sprite {
 
         public void SpriteUp(){
                 this.pathExtention += "up/up ";
-                this.frame = 1;
+                this.frame = frame++;
         }
 
         public void SpriteDown(){
                 this.pathExtention += "down/down ";
-                this.frame = 1;
+                this.frame = frame++;
         }
 
         public void SpriteLeft(){
                 this.pathExtention += "left/left ";
-                this.frame = 1;
+                this.frame = frame++;
         }
 
         public void SpriteRight(){
                 this.pathExtention += "right/right ";
-                this.frame = 1;
+                this.frame = frame++;
         }
 
         public void SpriteIdle(){
                 pathExtention = "down/down ";
                 this.path += pathExtention;
-                this.frame = 1;
+                this.frame = frame++;
         }
 
         public void SpriteDead(){

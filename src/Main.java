@@ -63,44 +63,30 @@ public class Main {
             StdDraw.setPenColor(Color.RED);
             StdDraw.filledRectangle(0,Scale,tester.getHealth(),50);
 
-            if (StdDraw.isKeyPressed(VK_DOWN)){
-                dude.setPathExtention("");
-                dude.SpriteDown();
-                tester.setVy(tester.getVy()-10);
-            }
-            if (StdDraw.isKeyPressed(VK_UP)){
-                dude.setPathExtention("");
-                dude.SpriteUp();
-                tester.setVy(tester.getVy()+10);
-            }
-            if (StdDraw.isKeyPressed(VK_LEFT)){
-                dude.setPathExtention("");
-                dude.SpriteLeft();
-                tester.setVx(tester.getVx()-10);
-            }
-            if (StdDraw.isKeyPressed(VK_RIGHT)){
-                dude.setPathExtention("");
-                dude.SpriteRight();
-                tester.setVx(tester.getVx()+10);
+            if(tester.getHealth() > 0){
+                tester.MoveChar(dude,tester, 20);
             }
             //Zombie Moving Mechanics
 
-            double distanceZom1 = 0; //Math.sqrt(((tester.getVx()-zom1.getVx())*(tester.getVx()-zom1.getVx())) + ((tester.getVy()-zom1.getVy()) * (tester.getVy()-zom1.getVy())));
+            double distanceZom1 = Math.sqrt(((tester.getVx()-zom1.getVx())*(tester.getVx()-zom1.getVx())) + ((tester.getVy()-zom1.getVy()) * (tester.getVy()-zom1.getVy())));
 
             double distanceZom2 = 0;
 
-            zom1.MoveTowards(zom1,tester);
+            //zom1.MoveTowards(zom1,tester);
 
-            /*if (distanceZom1 <= 30){
+            if (distanceZom1 <= 500){
                 zom1.MoveTowards(zom1,tester);
             }
 
-             */
+            zom1.AreaOfDamage(zom1,tester);
 
 
             // Taking away Health due to zombie "bite"
             if (tester.getVy() == zom1.getVy() && tester.getVx() == zom1.getVx()){
                 tester.setHealth(tester.getHealth()-10);
+                if (tester.getHealth() > 0){
+                    zom1.MoveTowards(zom1, tester);
+                }
             }
 
             //Zombie Spawning Mechanics

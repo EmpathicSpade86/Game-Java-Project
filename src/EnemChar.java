@@ -34,4 +34,5 @@ public class EnemChar extends  MovingObject {
     public void setDeaddead(boolean deaddead) {
         this.deaddead = deaddead;
     }
+
 }
