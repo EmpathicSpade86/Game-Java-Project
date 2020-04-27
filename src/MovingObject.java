@@ -38,20 +38,66 @@ public class MovingObject extends GameObject {
 
     public void MoveTowards(MovingObject me, MovingObject character) {
         if (character.getVx() > me.getVx()) {
-            me.setVx(me.getVx() + 15);
+            me.setVx(me.getVx() + 1);
+            System.out.println("Condition 1 Met");
         } else {
-            me.setVx(me.getVx() - 15);
+            me.setVx(me.getVx() - 1);
+            System.out.println("Condition 2 Met");
         }
         if (character.getVy() > me.getVy()) {
-            me.setVx((me.getVy() + 15));
+            me.setVy((me.getVy() + 1));
+            System.out.println("Condition 3 Met");
         } else {
-            me.setVy(me.getVy() - 15);
+            me.setVy(me.getVy() - 1);
+            System.out.println("Condition 4 Met");
         }
-
         if (character.getVx() == me.getVx() && character.getVy() == me.getVy()){
             me.setVx(me.getVx()+1);
             me.setVy(me.getVy()+1);
+            System.out.println("Condition 5 Met");
         }
+    }
+
+    public void RandomMovement(MovingObject Zombie){
+        int decider = (int) Math.floor(Math.random() * 1001) +1;
+        if (decider >= 1 && decider < 250){
+            if (Zombie.getHealth() > 0){
+                Zombie.setVx(Zombie.getVx() + 10);
+            }
+            if (Zombie.getHealth() > 0) {
+                Zombie.setVy(Zombie.getVy() + 10);
+            }
+        }
+        if (decider >= 250 && decider < 500){
+            if (Zombie.getHealth() > 0){
+                Zombie.setVx(Zombie.getVx() + 10);
+            }
+            if (Zombie.getHealth() > 0){
+                Zombie.setVy(Zombie.getVy() - 10);
+            }
+        }
+        if (decider >= 500 && decider < 750) {
+            if (Zombie.getHealth() > 0){
+                Zombie.setVx(Zombie.getVx() - 10);
+            }
+            if (Zombie.getHealth() > 0) {
+                Zombie.setVy(Zombie.getVy() + 10);
+            }
+        }
+        if (decider >= 750 && decider <= 1000){
+            if (Zombie.getHealth() > 0){
+                Zombie.setVx(Zombie.getVx() - 10);
+            }
+            if (Zombie.getHealth() > 0){
+                Zombie.setVy(Zombie.getVy() - 10);
+            }
+        }
+
+
+        System.out.println(decider);
+        System.out.println("Moving Randomly");
+
+
     }
 
     public void MoveChar(Sprite dude, MovingObject tester, int spd){
@@ -84,7 +130,7 @@ public class MovingObject extends GameObject {
     public void AreaOfDamage(MovingObject zom, MovingObject tester){
         double distance = Math.sqrt(((tester.getVx()-zom.getVx())*(tester.getVx()-zom.getVx())) + ((tester.getVy()-zom.getVy()) * (tester.getVy()-zom.getVy())));
 
-        if (distance <= 25){
+        if (distance <= 100){
             tester.setHealth(tester.getHealth()-100);
         }
 

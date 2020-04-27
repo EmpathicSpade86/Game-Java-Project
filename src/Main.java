@@ -76,6 +76,8 @@ public class Main {
 
             if (distanceZom1 <= 500){
                 zom1.MoveTowards(zom1,tester);
+            }else{
+                zom1.RandomMovement(zom1);
             }
 
             zom1.AreaOfDamage(zom1,tester);
