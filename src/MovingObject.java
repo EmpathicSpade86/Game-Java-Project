@@ -37,25 +37,38 @@ public class MovingObject extends GameObject {
     }
 
     public void MoveTowards(MovingObject me, MovingObject character) {
-        if (character.getVx() > me.getVx()) {
-            me.setVx(me.getVx() + 1);
-            System.out.println("Condition 1 Met");
-        } else {
-            me.setVx(me.getVx() - 1);
-            System.out.println("Condition 2 Met");
+        double distance = Math.sqrt(((character.getVx()-me.getVx())*(character.getVx()-me.getVx())) + ((character.getVy()-me.getVy()) * (character.getVy()-me.getVy())));
+
+        if (distance <= 200) {
+
+            if (character.getVx() > me.getVx()) {
+                me.setVx(me.getVx() + 15);
+                //System.out.println("Condition 1 Met");
+            } else {
+                me.setVx(me.getVx() - 15);
+                //System.out.println("Condition 2 Met");
+            }
+            if (character.getVy() > me.getVy()) {
+                me.setVy((me.getVy() + 15));
+                //System.out.println("Condition 3 Met");
+            } else {
+                me.setVy(me.getVy() - 15);
+                //System.out.println("Condition 4 Met");
+            }
+            if (character.getVx() == me.getVx() && character.getVy() == me.getVy()) {
+                me.setVx(me.getVx() + 1);
+                me.setVy(me.getVy() + 1);
+                //System.out.println("Condition 5 Met");
+            }
+        }else{
+            me.RandomMovement(me);
         }
-        if (character.getVy() > me.getVy()) {
-            me.setVy((me.getVy() + 1));
-            System.out.println("Condition 3 Met");
-        } else {
-            me.setVy(me.getVy() - 1);
-            System.out.println("Condition 4 Met");
-        }
-        if (character.getVx() == me.getVx() && character.getVy() == me.getVy()){
-            me.setVx(me.getVx()+1);
-            me.setVy(me.getVy()+1);
-            System.out.println("Condition 5 Met");
-        }
+    }
+
+    public void Draw(Sprite zombiePic, MovingObject zombie){
+        //zombiePic.SpriteIdle();
+        StdDraw.picture(zombie.getVx(),zombie.getVy(), "Sprites/" + zombiePic.getPath() + "(" +zombiePic.getFrame() + ").png");
+        zombiePic.animate();
     }
 
     public void RandomMovement(MovingObject Zombie){
@@ -92,12 +105,8 @@ public class MovingObject extends GameObject {
                 Zombie.setVy(Zombie.getVy() - 10);
             }
         }
-
-
-        System.out.println(decider);
-        System.out.println("Moving Randomly");
-
-
+        //System.out.println(decider);
+        //System.out.println("Moving Randomly");
     }
 
     public void MoveChar(Sprite dude, MovingObject tester, int spd){
@@ -123,10 +132,6 @@ public class MovingObject extends GameObject {
         }
     }
 
-    public void pauseZombie(){
-
-    }
-
     public void AreaOfDamage(MovingObject zom, MovingObject tester){
         double distance = Math.sqrt(((tester.getVx()-zom.getVx())*(tester.getVx()-zom.getVx())) + ((tester.getVy()-zom.getVy()) * (tester.getVy()-zom.getVy())));
 
@@ -134,6 +139,6 @@ public class MovingObject extends GameObject {
             tester.setHealth(tester.getHealth()-100);
         }
 
-        System.out.println(distance);
+        //System.out.println(distance);
     }
 }

@@ -18,7 +18,16 @@ public class Main {
         Sprite barrier = new Sprite("Barrier","");
 
         MovingObject zom1 = new EnemChar(1000, 1000, zombie1, 0, 0, 1000, 1, 10, false);
-        MovingObject zom2 = new EnemChar(1250, 1250, zombie2, 0,0,1000, 1,10,false);
+        MovingObject zom2 = new EnemChar(1000, 1000, zombie2, 0, 0, 1000, 1, 10, false);
+        MovingObject zom3 = new EnemChar(1000, 1000, zombie1, 0, 0, 1000, 1, 10, false);
+        MovingObject zom4 = new EnemChar(1000, 1000, zombie2, 0, 0, 1000, 1, 10, false);
+        MovingObject zom5 = new EnemChar(1000, 1000, zombie1, 0, 0, 1000, 1, 10, false);
+        MovingObject zom6 = new EnemChar(1000, 1000, zombie2, 0, 0, 1000, 1, 10, false);
+        MovingObject zom7 = new EnemChar(1000, 1000, zombie1, 0, 0, 1000, 1, 10, false);
+        MovingObject zom8 = new EnemChar(1000, 1000, zombie2, 0, 0, 1000, 1, 10, false);
+        MovingObject zom9 = new EnemChar(1000, 1000, zombie1, 0, 0, 1000, 1, 10, false);
+        MovingObject zom10 = new EnemChar(1000, 1000, zombie2, 0, 0, 1000, 1, 10, false);
+
 
         StdDraw.enableDoubleBuffering();
 
@@ -26,23 +35,27 @@ public class Main {
         StdDraw.setScale(0,Scale);
 
         dude.SpriteIdle();
-
         zombie1.SpriteIdle();
         zombie2.SpriteIdle();
-
-        int spawnZom1X = zom1.getVx();
-        int spawnZom1Y = zom1.getVy();
-
-        int spawnZom2X = zom2.getVx();
-        int spawnZom2Y = zom2.getVy();
-
 
 
 
         while(true)
         {
-            StdDraw.picture(zom1.getVx(),zom1.getVy(), "Sprites/" + zombie1.getPath() + "(" +zombie1.getFrame() + ").png");
+            zom1.Draw(zombie1,zom1);
+            zom2.Draw(zombie2,zom2);
+            zom3.Draw(zombie1,zom3);
+            zom4.Draw(zombie2,zom4);
+            zom5.Draw(zombie1,zom5);
+            zom6.Draw(zombie2,zom6);
+            zom7.Draw(zombie1,zom7);
+            zom8.Draw(zombie2,zom8);
+            zom9.Draw(zombie1,zom9);
+            zom10.Draw(zombie2,zom10);
+
             zombie1.animate();
+            zombie2.animate();
+
             StdDraw.picture(tester.getVx(),tester.getVy(),"Sprites/" + dude.getPath() + "(" + dude.getFrame() + ").png");
             dude.animate();
             StdDraw.show();
@@ -68,19 +81,28 @@ public class Main {
             }
             //Zombie Moving Mechanics
 
-            double distanceZom1 = Math.sqrt(((tester.getVx()-zom1.getVx())*(tester.getVx()-zom1.getVx())) + ((tester.getVy()-zom1.getVy()) * (tester.getVy()-zom1.getVy())));
-
-            double distanceZom2 = 0;
-
-            //zom1.MoveTowards(zom1,tester);
-
-            if (distanceZom1 <= 500){
-                zom1.MoveTowards(zom1,tester);
-            }else{
-                zom1.RandomMovement(zom1);
-            }
+            //double distanceZom1 = Math.sqrt(((tester.getVx()-zom1.getVx())*(tester.getVx()-zom1.getVx())) + ((tester.getVy()-zom1.getVy()) * (tester.getVy()-zom1.getVy())));
+            zom1.MoveTowards(zom1,tester);
+            zom1.MoveTowards(zom2,tester);
+            zom1.MoveTowards(zom3,tester);
+            zom1.MoveTowards(zom4,tester);
+            zom1.MoveTowards(zom5,tester);
+            zom1.MoveTowards(zom6,tester);
+            zom1.MoveTowards(zom7,tester);
+            zom1.MoveTowards(zom8,tester);
+            zom1.MoveTowards(zom9,tester);
+            zom1.MoveTowards(zom10,tester);
 
             zom1.AreaOfDamage(zom1,tester);
+            zom1.AreaOfDamage(zom2,tester);
+            zom1.AreaOfDamage(zom3,tester);
+            zom1.AreaOfDamage(zom4,tester);
+            zom1.AreaOfDamage(zom5,tester);
+            zom1.AreaOfDamage(zom6,tester);
+            zom1.AreaOfDamage(zom7,tester);
+            zom1.AreaOfDamage(zom8,tester);
+            zom1.AreaOfDamage(zom9,tester);
+            zom1.AreaOfDamage(zom10,tester);
 
 
             // Taking away Health due to zombie "bite"
